@@ -8,7 +8,7 @@ const DEFAULT_RECONNECT_MAX_DELAY = 30000;
 const DEFAULT_LOG_LEVEL = 'info';
 
 export function loadConfig(): WeComBotConfig {
-  const required = ['SALER_AGENT_BOTID', 'SALER_AGENT_SECRET'];
+  const required = ['WECOM_BOT_ID', 'WECOM_BOT_SECRET'];
   
   for (const key of required) {
     if (!process.env[key]) {
@@ -17,8 +17,8 @@ export function loadConfig(): WeComBotConfig {
   }
 
   return {
-    botId: process.env.SALER_AGENT_BOTID!,
-    secret: process.env.SALER_AGENT_SECRET!,
+    botId: process.env.WECOM_BOT_ID!,
+    secret: process.env.WECOM_BOT_SECRET!,
     wsUrl: process.env.WECOM_WS_URL || DEFAULT_WS_URL,
     heartbeatInterval: parseInt(process.env.WECOM_HEARTBEAT_INTERVAL || '', 10) || DEFAULT_HEARTBEAT_INTERVAL,
     maxReconnectAttempts: parseInt(process.env.WECOM_MAX_RECONNECT_ATTEMPTS || '', 10) || DEFAULT_MAX_RECONNECT_ATTEMPTS,
