@@ -1,0 +1,68 @@
+{
+  "tasks": [
+    {
+      "id": "task-wecom-bot-1",
+      "type": "app",
+      "workspace": null,
+      "category": "implementation",
+      "description": "实现企业微信机器人长连接功能，基于官方文档 https://developer.work.weixin.qq.com/document/path/101463",
+      "dependsOn": [],
+      "steps": [
+        "1. 研究企业微信官方文档，理解长连接协议和回调机制",
+        "2. 创建基础项目结构：src/client.ts（客户端）, src/types.ts（类型定义）",
+        "3. 实现 WebSocket 长连接连接管理（建立、断开、重连）",
+        "4. 实现消息接收和分发机制",
+        "5. 实现消息发送功能（文本消息）",
+        "6. 添加心跳机制保持连接活跃",
+        "7. 实现错误处理和异常恢复",
+        "8. 编写基础使用示例和文档",
+        "9. VERIFY: 可以成功建立长连接并接收消息",
+        "10. VERIFY: 可以主动发送文本消息"
+      ],
+      "passes": false
+    },
+    {
+      "id": "task-wecom-bot-2",
+      "type": "app",
+      "workspace": null,
+      "category": "feature",
+      "description": "实现机器人主动发消息和对话回答功能",
+      "dependsOn": ["task-wecom-bot-1"],
+      "steps": [
+        "1. 扩展消息类型支持（文本、图片、链接等）",
+        "2. 实现消息路由和上下文管理",
+        "3. 集成 LLM API（可选）用于智能对话",
+        "4. 实现群消息监控和自动回复逻辑",
+        "5. 添加消息队列和去重机制",
+        "6. 实现关键词检测和触发器功能",
+        "7. 添加消息日志和记录功能",
+        "8. 编写使用文档和示例代码",
+        "9. VERIFY: 机器人可以主动发送不同类型的消息",
+        "10. VERIFY: 机器人可以根据群内对话进行智能回复"
+      ],
+      "passes": false
+    },
+    {
+      "id": "task-wecom-bot-3",
+      "type": "app",
+      "workspace": null,
+      "category": "feature",
+      "description": "实现向指定群发送音频和视频文件功能",
+      "dependsOn": ["task-wecom-bot-1", "task-wecom-bot-2"],
+      "steps": [
+        "1. 研究企业微信媒体文件上传 API",
+        "2. 实现文件上传功能（本地文件 → 临时素材）",
+        "3. 实现音频文件发送支持（mp3、m4a 等格式）",
+        "4. 实现视频文件发送支持（mp4 等格式）",
+        "5. 添加文件大小和格式验证",
+        "6. 实现上传进度跟踪",
+        "7. 添加错误处理和重试机制",
+        "8. 优化大文件上传性能",
+        "9. 编写使用文档和示例代码",
+        "10. VERIFY: 可以成功向群发送音频文件",
+        "11. VERIFY: 可以成功向群发送视频文件"
+      ],
+      "passes": false
+    }
+  ]
+}
