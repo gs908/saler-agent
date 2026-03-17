@@ -1,0 +1,32 @@
+diff --git a/dist/index.cjs.js b/dist/index.cjs.js
+index b7f685276e62e9e67a234c4cfe14d7f78d720e97..7c2d1d037d8a630a19e032cd9c08919d2960886d 100644
+--- a/dist/index.cjs.js
++++ b/dist/index.cjs.js
+@@ -654,7 +654,10 @@ class MessageHandler {
+                 emitter.emit('message.file', frame);
+                 break;
+             default:
+-                this.logger.debug(`Received unhandled message type: ${body.msgtype}`);
++                if (body.msgtype && typeof body.msgtype === 'string') {
++                    emitter.emit(`message.${body.msgtype}`, frame);
++                }
++                this.logger.info(`[aibot] message type: ${body.msgtype} (generic emit message.${body.msgtype})`);
+                 break;
+         }
+     }
+diff --git a/dist/index.esm.js b/dist/index.esm.js
+index 21dc0220b26f40f0dd1de80a297ba78325be89a3..daef945c6206d84f57e0430bd102971831bd1418 100644
+--- a/dist/index.esm.js
++++ b/dist/index.esm.js
+@@ -650,7 +650,10 @@ class MessageHandler {
+                 emitter.emit('message.file', frame);
+                 break;
+             default:
+-                this.logger.debug(`Received unhandled message type: ${body.msgtype}`);
++                if (body.msgtype && typeof body.msgtype === 'string') {
++                    emitter.emit(`message.${body.msgtype}`, frame);
++                }
++                this.logger.info(`[aibot] message type: ${body.msgtype} (generic emit message.${body.msgtype})`);
+                 break;
+         }
+     }

@@ -1,0 +1,7 @@
+{
+  "tool_name": "Bash",
+  "tool_input_preview": "{\"command\":\"cd D:/workspaces/agentic-workspace/saler-agent && pnpm build 2>&1\"}",
+  "error": "Exit code 2\n\n> saler-agent@1.0.0 build D:\\workspaces\\agentic-workspace\\saler-agent\n> tsc\n\nsrc/client/config.ts(83,1): error TS1128: Declaration or statement expected.\r\nsrc/types/index.ts(139,1): error TS1010: '*/' expected.\r\n ELIFECYCLE  Command failed with exit code 2.\n\n\n> saler-agent@1.0.0 build D:\\workspaces\\agentic-workspace\\saler-agent\n> tsc\n\nsrc/client/config.ts(83,1): error TS1128: Declaration or statement expected.\r\nsrc/types/index.ts(139,1): error TS1010: '*/' expected.\r\n ELIFECYCLE  Co...",
+  "timestamp": "2026-03-17T02:05:59.151Z",
+  "retry_count": 1
+}

@@ -88,14 +88,26 @@ export class WeComBotClient {
   private setupMessageHandlers(): void {
     if (!this.wsClient) return;
 
-    const messageTypes: MessageType[] = ['text', 'image', 'voice', 'file', 'mixed'];
+    // 与智能机器人「接收消息」一致：text / image / mixed / voice / file / video / stream
+    const messageTypes: MessageType[] = [
+      'text',
+      'image',
+      'voice',
+      'file',
+      'mixed',
+      'video',
+      'stream',
+      'location',
+    ];
     
     for (const msgType of messageTypes) {
       this.wsClient.on(`message.${msgType}` as any, (frame: WsFrame) => {
         const handler = this.messageHandlers.get(msgType);
         if (handler) {
           const data = this.parseMessageData(frame, msgType);
-          handler(data);
+          void Promise.resolve(handler(data, frame)).catch((err) => {
+            this.logger.error(`onMessage(${msgType}) error:`, err);
+          });
         }
       });
     }
@@ -278,17 +290,20 @@ export class WeComBotClient {
     if (!this.wsClient) {
       throw new Error('Client not connected');
     }
-    
+
+    // SDK only supports markdown/template_card/media, convert text to markdown
+    const actualMsgType = msgType === 'text' ? 'markdown' : msgType;
+
     const body = {
       chatid: userId,
+      to_userid: userId,
       chat_type: 1,
-      msgtype: msgType,
-      ...(msgType === 'markdown' 
+      msgtype: actualMsgType,
+      ...(actualMsgType === 'markdown'
         ? { markdown: { content } }
-        : { text: { content } }
-      ),
+        : {})
     };
-    
+
     await this.wsClient.sendMessage(userId, body as any);
   }
 

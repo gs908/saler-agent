@@ -1,6 +1,20 @@
 {
   "tasks": [
     {
+      "id": "task-wecom-bot-0",
+      "type": "app",
+      "workspace": null,
+      "category": "implementation",
+      "description": "初始化工程",
+      "dependsOn": [],
+      "steps": [
+        "1. 根据官方文档，添加所需的依赖",
+        "2. 初始化工程",
+        "3. VERIFY: 验证所有的依赖正常安装"
+      ],
+      "passes": true
+    },
+    {
       "id": "task-wecom-bot-1",
       "type": "app",
       "workspace": null,

@@ -39,7 +39,17 @@ export type ConnectionState =
 /**
  * Message Types
  */
-export type MessageType = 'text' | 'image' | 'voice' | 'file' | 'mixed' | 'markdown';
+/** 与文档「接收消息」msgtype 对齐：https://developer.work.weixin.qq.com/document/path/100719 */
+export type MessageType =
+  | 'text'
+  | 'image'
+  | 'voice'
+  | 'file'
+  | 'mixed'
+  | 'video'
+  | 'stream'
+  | 'location'
+  | 'markdown';
 
 /**
  * Event Types
@@ -52,9 +62,10 @@ export type EventType =
 
 /**
  * Handler Types
+ * 第二个参数为 SDK 原始帧，回复消息时必须传入（replyText / replyStream 等）
  */
 export interface MessageHandler {
-  (data: MessageHandlerData): Promise<void> | void;
+  (data: MessageHandlerData, frame: import('@wecom/aibot-node-sdk').WsFrame): Promise<void> | void;
 }
 
 export interface EventHandler {
@@ -102,4 +113,24 @@ export interface PushOptions {
   content: string;
   /** Message type */
   msgType?: 'markdown' | 'text';
+}
+
+/**
+ * Internal API Token (for trusted service authentication)
+ */
+export interface InternalApiToken {
+  /** App ID - passed via X-App-Id header */
+  appId: string;
+  /** Secret - passed via Authorization header */
+  secret: string;
+}
+
+/**
+ * Internal API Configuration
+ */
+export interface InternalApiConfig {
+  /** List of allowed tokens */
+  tokens: InternalApiToken[];
+  /** Server port */
+  port: number;
 }

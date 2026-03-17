@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx auto-staff:*)",
+      "Bash(npm view:*)",
+      "Bash(npm pack:*)",
+      "Bash(curl:*)",
+      "Bash(tar:*)",
+      "Bash(npx cache:*)",
+      "Bash(sed:*)",
+      "Bash(pnpm build:*)",
+      "Bash(rm:*)"
+    ]
+  }
+}

@@ -1,0 +1,2 @@
+patchedDependencies:
+  '@wecom/aibot-node-sdk@1.0.2': patches/@wecom__aibot-node-sdk@1.0.2.patch

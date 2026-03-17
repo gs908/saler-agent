@@ -1,0 +1,40 @@
+# 环境变量与密钥（勿提交）
+.env
+.env.*
+!.env.example
+
+# 依赖
+node_modules/
+
+# 构建输出
+dist/
+build/
+*.tsbuildinfo
+
+# 日志
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# 操作系统
+.DS_Store
+Thumbs.db
+
+# IDE / 编辑器
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# 测试与覆盖率
+coverage/
+.nyc_output/
+
+# 临时文件
+*.tmp
+.cache/
+
+# 本地下载的用户媒体（图片/文件/视频等）
+received/
