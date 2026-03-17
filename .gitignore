@@ -27,6 +27,8 @@ Thumbs.db
 .vscode/
 *.swp
 *.swo
+.omc/
+
 
 # 测试与覆盖率
 coverage/
